@@ -1,0 +1,21 @@
+[mysqld_safe]
+basedir        = /usr
+socket		   = mysqld.sock
+nice           = 0
+
+[mysqld]
+pid-file       = mysqld.pid
+socket         = mysqld.sock
+bind-address   = 127.0.0.1
+port           = 33306
+basedir        = /usr
+datadir        = ./instance
+tmpdir         = tmp
+innodb-tmpdir  = tmp
+log_error      = error.log
+lc-messages-dir   = /usr/share/mysql
+general_log_file  = mysql.log
+innodb-data-home-dir       = .
+innodb-log-group-home-dir  = .
+explicit_defaults_for_timestamp
+skip-external-locking
