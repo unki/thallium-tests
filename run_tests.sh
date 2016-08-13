@@ -33,7 +33,7 @@ function cleanup()
 }
 
 echo; echo;
-echo "$0 starting ($(date))."
+echo "${SCRIPT_NAME} starting ($(date))."
 echo; echo;
 
 [ ! -e mysql/root.conf ] || DEFAULTS_FILE="--defaults-file=mysql/root.conf"
@@ -175,3 +175,5 @@ phpunit \
    --report-useless-tests
 
 popd >/dev/null
+
+echo "${SCRIPT_NAME} finished ($(date))."
