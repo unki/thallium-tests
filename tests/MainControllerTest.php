@@ -6,10 +6,21 @@ use PHPUnit\Framework\TestCase;
 
 class MainControllerTest extends TestCase
 {
-    public function testInit()
+    /**
+     * @expectedException \Thallium\Controllers\ExceptionController
+     */
+    public function testNaked()
     {
         $controller = new \Thallium\Controllers\MainController;
+        $this->assertInstanceOf('\Thallium\Controllers\MainController', $controller);
+    }
 
+    /**
+     * @depends testNaked
+     */
+    public function testInit()
+    {
+        $controller = new \Thallium\Controllers\MainController('install');
         $this->assertInstanceOf('\Thallium\Controllers\MainController', $controller);
         return $controller;
     }
