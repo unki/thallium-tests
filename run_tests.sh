@@ -36,6 +36,15 @@ echo; echo;
 echo "${SCRIPT_NAME} starting ($(date))."
 echo; echo;
 
+echo "Performing syntax validation of phpunit test files".
+for TEST in tests/*.php; do
+   php -l ${TEST}
+   RETVAL=$?
+
+   [ ${RETVAL} -eq 0 ] || { echo "Syntax error in ${TEST} found."; exit 1; }
+done
+echo; echo;
+
 [ ! -e mysql/root.conf ] || DEFAULTS_FILE="--defaults-file=mysql/root.conf"
 
 if [ -S mysql/instance/mysqld.sock ]; then
