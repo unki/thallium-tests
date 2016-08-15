@@ -15,7 +15,8 @@
          stopOnRisky="true"
          verbose="true">
     <testsuite>
-        <directory suffix="Test.php">tests</directory>
+        <file>tests/MainControllerTest.php</file>
+        <file>tests/DefaultControllerTest.php</file>
     </testsuite>
 
     <filter>
