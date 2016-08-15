@@ -17,6 +17,7 @@
     <testsuite>
         <file>tests/MainControllerTest.php</file>
         <file>tests/DefaultControllerTest.php</file>
+        <file>tests/ConfigControllerTest.php</file>
     </testsuite>
 
     <filter>
