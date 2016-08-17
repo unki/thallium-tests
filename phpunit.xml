@@ -19,6 +19,7 @@
         <file>tests/DefaultControllerTest.php</file>
         <file>tests/ConfigControllerTest.php</file>
         <file>tests/CacheControllerTest.php</file>
+        <file>tests/AuditControllerTest.php</file>
     </testsuite>
 
     <filter>
