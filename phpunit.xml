@@ -21,6 +21,7 @@
         <file>tests/CacheControllerTest.php</file>
         <file>tests/AuditControllerTest.php</file>
         <file>tests/HttpRouterControllerTest.php</file>
+        <file>tests/JobsControllerTest.php</file>
     </testsuite>
 
     <filter>
