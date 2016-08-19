@@ -23,6 +23,7 @@
         <file>tests/HttpRouterControllerTest.php</file>
         <file>tests/JobsControllerTest.php</file>
         <file>tests/RequirementsControllerTest.php</file>
+        <file>tests/RpcControllerTest.php</file>
     </testsuite>
 
     <filter>
