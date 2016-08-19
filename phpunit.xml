@@ -22,6 +22,7 @@
         <file>tests/AuditControllerTest.php</file>
         <file>tests/HttpRouterControllerTest.php</file>
         <file>tests/JobsControllerTest.php</file>
+        <file>tests/RequirementsControllerTest.php</file>
     </testsuite>
 
     <filter>
