@@ -30,8 +30,6 @@ use PHPUnit\Framework\TestCase;
 
 class JobsControllerTest extends TestCase
 {
-    protected $test_job;
-
     /**
      * instances the JobsController.
      * All other tests are depending on this method.
