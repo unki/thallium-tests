@@ -56,7 +56,9 @@ class ViewsControllerTest extends TestCase
      */
     public function testGetView(\Thallium\Controllers\ViewsController $controller)
     {
-        $this->assertTrue($controller->getView('phpunit'));
+        $view = $controller->getView('internaltestview');
+        $this->assertInstanceOf('\Thallium\Views\InternalTestView', $view);
+        $this->assertNotEmpty($view);
     }
 
     /**
@@ -66,11 +68,13 @@ class ViewsControllerTest extends TestCase
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
      * @depends testConstruct
-     * @depends testRegisterHandler
+     * @depends testGetView
      */
     public function testLoad(\Thallium\Controllers\ViewsController $controller)
     {
-        $this->assertTrue($controller->load('phpunit', true));
+        $view = $controller->load('internaltestview', true);
+        $this->assertNotFalse($view);
+        $this->assertNotEmpty($view);
     }
 }
 
