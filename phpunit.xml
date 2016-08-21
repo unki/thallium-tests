@@ -25,6 +25,7 @@
         <file>tests/RequirementsControllerTest.php</file>
         <file>tests/RpcControllerTest.php</file>
         <file>tests/ViewsControllerTest.php</file>
+        <file>tests/TemplatesControllerTest.php</file>
     </testsuite>
 
     <filter>
