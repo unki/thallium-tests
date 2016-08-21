@@ -67,7 +67,7 @@ class HttpRouterControllerTest extends TestCase
 
         $this->assertEquals('GET', $dump->method);
         $this->assertEquals(sprintf(
-            '/thallium/documents/test-%d-%s?testparam=foobar',
+            '/thallium/documents/show-%d-%s?testparam=foobar',
             1,
             '0123456789012345678901234567890123456789012345678901234567890123'
         ), $dump->uri);
@@ -75,7 +75,7 @@ class HttpRouterControllerTest extends TestCase
         $this->assertInternalType('array', $dump->params);
         $this->assertNotEmpty($dump->params);
         $this->assertEquals(
-            'test-1-0123456789012345678901234567890123456789012345678901234567890123',
+            'show-1-0123456789012345678901234567890123456789012345678901234567890123',
             $dump->params[1]
         );
         $this->assertEquals(
