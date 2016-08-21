@@ -28,6 +28,7 @@
         <file>tests/ViewsControllerTest.php</file>
         <file>tests/TemplatesControllerTest.php</file>
         <file>tests/MessageBusController.php</file>
+        <file>tests/PagingControllerTest.php</file>
     </testsuite>
 
     <filter>
