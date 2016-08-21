@@ -18,6 +18,7 @@
         <file>tests/MainControllerTest.php</file>
         <file>tests/DefaultControllerTest.php</file>
         <file>tests/ConfigControllerTest.php</file>
+        <file>tests/DatabaseControllerTest.php</file>
         <file>tests/CacheControllerTest.php</file>
         <file>tests/AuditControllerTest.php</file>
         <file>tests/HttpRouterControllerTest.php</file>
