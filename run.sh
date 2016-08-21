@@ -26,7 +26,7 @@ fi
 echo "Update thallium repository."
 pushd ${SOURCE} >/dev/null
 git fetch -q ${GITORIGIN}
-git rebase -q -s recursive -X ours ${GITORIGIN}/master
+git rebase -s recursive -X ours ${GITORIGIN}/master
 popd >/dev/null
 
 bash run_docs.sh
