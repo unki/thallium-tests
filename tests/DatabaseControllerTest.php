@@ -522,6 +522,9 @@ class DatabaseControllerTest extends TestCase
 
     /**
      * a test to delete all tables.
+     *
+     * afterwards the InstallerController is invoked to restore the tables.
+     *
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
@@ -534,7 +537,6 @@ class DatabaseControllerTest extends TestCase
         $this->assertTrue($controller->newTransaction());
 
         foreach ($tables as $table) {
-
             $sth = $controller->query(sprintf('DROP TABLE %s', $table));
 
             $this->assertNotFalse($sth);
@@ -544,7 +546,7 @@ class DatabaseControllerTest extends TestCase
         $this->assertTrue($controller->closeTransaction());
 
         $installer = new \Thallium\Controllers\InstallerController;
-        $installer->setup();
+        $this->assertTrue($installer->setup());
     }
 }
 
