@@ -29,6 +29,7 @@
         <file>tests/TemplatesControllerTest.php</file>
         <file>tests/MessageBusController.php</file>
         <file>tests/SessionControllerTest.php</file>
+        <file>tests/ExceptionControllerTest.php</file>
         <file>tests/PagingControllerTest.php</file>
     </testsuite>
 
