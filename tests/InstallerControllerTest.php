@@ -60,6 +60,29 @@ class InstallerControllerTest extends TestCase
     {
         $this->assertTrue($controller->setup());
     }
+
+    /**
+     * create a test table that is used later for Model tests.
+     *
+     * @params object $controller
+     * @returns void
+     * @throws \Thallium\Controllers\InstallerController
+     * @depends testConstruct
+     * @depends testSetup
+     */
+    public function testTestTables(\Thallium\Controllers\InstallerController $controller)
+    {
+        global $db;
+
+        $result = $db->query(
+            "CREATE TABLE TABLEPREFIXtests (
+                test_idx int auto_increment primary key,
+                test_guid varchar(64) not null
+            )"
+        );
+
+        $this->assertNotFalse($result);
+    }
 }
 
 // vim: set filetype=php expandtab softtabstop=4 tabstop=4 shiftwidth=4:
