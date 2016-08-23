@@ -14,31 +14,36 @@
          stopOnSkipped="true"
          stopOnRisky="true"
          verbose="true">
-    <testsuite>
-        <file>tests/MainControllerTest.php</file>
-        <file>tests/DefaultControllerTest.php</file>
-        <file>tests/ConfigControllerTest.php</file>
-        <file>tests/DatabaseControllerTest.php</file>
-        <file>tests/InstallerControllerTest.php</file>
-        <file>tests/CacheControllerTest.php</file>
-        <file>tests/AuditControllerTest.php</file>
-        <file>tests/HttpRouterControllerTest.php</file>
-        <file>tests/JobsControllerTest.php</file>
-        <file>tests/RequirementsControllerTest.php</file>
-        <file>tests/RpcControllerTest.php</file>
-        <file>tests/ViewsControllerTest.php</file>
-        <file>tests/TemplatesControllerTest.php</file>
-        <file>tests/MessageBusController.php</file>
-        <file>tests/SessionControllerTest.php</file>
-        <file>tests/ExceptionControllerTest.php</file>
-        <file>tests/PagingControllerTest.php</file>
-    </testsuite>
+	<testsuites>
+		<testsuite name="controllers">
+			<file>tests/MainControllerTest.php</file>
+			<file>tests/DefaultControllerTest.php</file>
+			<file>tests/ConfigControllerTest.php</file>
+			<file>tests/DatabaseControllerTest.php</file>
+			<file>tests/InstallerControllerTest.php</file>
+			<file>tests/CacheControllerTest.php</file>
+			<file>tests/AuditControllerTest.php</file>
+			<file>tests/HttpRouterControllerTest.php</file>
+			<file>tests/JobsControllerTest.php</file>
+			<file>tests/RequirementsControllerTest.php</file>
+			<file>tests/RpcControllerTest.php</file>
+			<file>tests/ViewsControllerTest.php</file>
+			<file>tests/TemplatesControllerTest.php</file>
+			<file>tests/MessageBusController.php</file>
+			<file>tests/SessionControllerTest.php</file>
+			<file>tests/ExceptionControllerTest.php</file>
+			<file>tests/PagingControllerTest.php</file>
+		</testsuite>
+		<testsuite name="models">
+			<file>tests/DefaultModelTest.php</file>
+		</testsuite>
+   </testsuites>
 
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">.</directory>
-        </whitelist>
-    </filter>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">.</directory>
+		</whitelist>
+	</filter>
 
     <php>
         <const name="PHPUNIT_THALLIUM_TESTSUITE_ACTIVE" value="1" />
