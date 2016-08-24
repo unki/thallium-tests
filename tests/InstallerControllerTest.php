@@ -77,7 +77,8 @@ class InstallerControllerTest extends TestCase
         $result = $db->query(
             "CREATE TABLE TABLEPREFIXtests (
                 test_idx int auto_increment primary key,
-                test_guid varchar(64) not null
+                test_guid varchar(64) not null,
+                test_link int default NULL
             )"
         );
 
