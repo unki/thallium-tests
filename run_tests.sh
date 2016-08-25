@@ -181,7 +181,8 @@ phpunit \
    --stderr \
    --verbose \
    --disallow-test-output \
-   --report-useless-tests
+   --report-useless-tests \
+   $@
 
 popd >/dev/null
 
