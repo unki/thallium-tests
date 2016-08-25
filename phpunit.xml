@@ -36,6 +36,7 @@
 		</testsuite>
 		<testsuite name="models">
 			<file>tests/DefaultModelTest.php</file>
+			<file>tests/AuditEntryModelTest.php</file>
 		</testsuite>
    </testsuites>
 
