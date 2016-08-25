@@ -30,4 +30,4 @@ git rebase -s recursive -X ours ${GITORIGIN}/master
 popd >/dev/null
 
 bash run_docs.sh
-bash run_tests.sh
+bash run_tests.sh $@
