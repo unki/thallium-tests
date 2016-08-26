@@ -29,5 +29,8 @@ git fetch -q ${GITORIGIN}
 git rebase -s recursive -X ours ${GITORIGIN}/master
 popd >/dev/null
 
+echo; echo; echo
 bash run_docs.sh
+
+echo; echo; echo
 bash run_tests.sh $@
