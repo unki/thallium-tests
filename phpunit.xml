@@ -46,6 +46,7 @@
 		<testsuite name="views">
 			<file>tests/DefaultViewTest.php</file>
 			<file>tests/MainViewTest.php</file>
+			<file>tests/SkeletonViewTest.php</file>
 		</testsuite>
    </testsuites>
 
