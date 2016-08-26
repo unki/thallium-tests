@@ -39,6 +39,7 @@
 			<file>tests/AuditEntryModelTest.php</file>
 			<file>tests/AuditLogModelTest.php</file>
 			<file>tests/JobModelTest.php</file>
+			<file>tests/JobsModelTest.php</file>
 		</testsuite>
    </testsuites>
 
