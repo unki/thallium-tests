@@ -43,6 +43,9 @@
 			<file>tests/MessageModelTest.php</file>
 			<file>tests/MessageBusModelTest.php</file>
 		</testsuite>
+		<testsuite name="views">
+			<file>tests/DefaultViewTest.php</file>
+		</testsuite>
    </testsuites>
 
 	<filter>
