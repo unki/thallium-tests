@@ -67,7 +67,9 @@ class RpcControllerTest extends TestCase
      */
     public function testPerform(\Thallium\Controllers\RpcController $controller)
     {
-        $this->assertEquals('Thallium\Views\InternalTestView', $controller->perform());
+        $this->assertNotFalse($dump = $controller->perform());
+        $this->assertNotEmpty($dump);
+        $this->assertInternalType('string', $dump);
     }
 }
 
