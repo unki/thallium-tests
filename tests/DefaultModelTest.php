@@ -37,8 +37,6 @@ class DefaultModelTest extends TestCase
      * @params none
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstructFieldModel
-     * @depends testConstructItemsModel
      */
     public function setUp()
     {
