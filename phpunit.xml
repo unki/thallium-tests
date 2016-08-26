@@ -41,6 +41,7 @@
 			<file>tests/JobModelTest.php</file>
 			<file>tests/JobsModelTest.php</file>
 			<file>tests/MessageModelTest.php</file>
+			<file>tests/MessageBusModelTest.php</file>
 		</testsuite>
    </testsuites>
 
