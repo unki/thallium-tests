@@ -85,7 +85,7 @@ class ExceptionControllerTest extends TestCase
     }
 
     /**
-     * a test for the () method.
+     * a test for the __toString() method.
      *
      * @params object $controller
      * @returns void
@@ -99,19 +99,6 @@ class ExceptionControllerTest extends TestCase
         $this->assertNotFalse($dump);
         $this->assertNotEmpty($dump);
         $this->assertInternalType('string', $dump);
-    }
-
-    /**
-     * a test for the isStopExecution() method.
-     *
-     * @params object $controller
-     * @returns void
-     * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
-     */
-    public function testIsStopExecution(\Thallium\Controllers\ExceptionController $controller)
-    {
-        $this->assertFalse($controller->isStopExecution());
     }
 }
 
