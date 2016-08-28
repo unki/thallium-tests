@@ -268,7 +268,7 @@ class HttpRouterControllerTest extends TestCase
         $dump = $controller->getQueryMethod();
         $this->assertInternalType('string', $dump);
         $this->assertNotEmpty($dump);
-        $this->assertEquals('testparam=foobar', $dump);
+        $this->assertEquals('GET', $dump);
     }
 
     /**
@@ -297,7 +297,12 @@ class HttpRouterControllerTest extends TestCase
         $dump = $controller->getQueryUri();
         $this->assertInternalType('string', $dump);
         $this->assertNotEmpty($dump);
-        $this->assertEquals('testparam=foobar', $dump);
+        $this->assertEquals(
+            '/thallium/documents/show-1-'.
+            '0123456789012345678901234567890123456789012345678901234567890123'.
+            '?testparam=foobar',
+            $dump
+        );
     }
 
     /**
@@ -326,7 +331,7 @@ class HttpRouterControllerTest extends TestCase
         $dump = $controller->getQueryView();
         $this->assertInternalType('string', $dump);
         $this->assertNotEmpty($dump);
-        $this->assertEquals('testparam=foobar', $dump);
+        $this->assertEquals('documents', $dump);
     }
 }
 
