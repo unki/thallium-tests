@@ -241,6 +241,93 @@ class HttpRouterControllerTest extends TestCase
         $this->assertNotEmpty($dump);
         $this->assertEquals('testparam=foobar', $dump);
     }
+
+    /**
+     * a test for the hasQueryMethod() method.
+     *
+     * @params object $controller
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testConstruct
+     */
+    public function testHasQueryMethod(\Thallium\Controllers\HttpRouterController $controller)
+    {
+        $this->assertTrue($controller->hasQueryMethod());
+    }
+
+    /**
+     * a test for the getQueryMethod() method.
+     *
+     * @params object $controller
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testConstruct
+     */
+    public function testGetQueryMethod(\Thallium\Controllers\HttpRouterController $controller)
+    {
+        $dump = $controller->getQueryMethod();
+        $this->assertInternalType('string', $dump);
+        $this->assertNotEmpty($dump);
+        $this->assertEquals('testparam=foobar', $dump);
+    }
+
+    /**
+     * a test for the hasQueryUri() method.
+     *
+     * @params object $controller
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testConstruct
+     */
+    public function testHasQueryUri(\Thallium\Controllers\HttpRouterController $controller)
+    {
+        $this->assertTrue($controller->hasQueryUri());
+    }
+
+    /**
+     * a test for the getQueryUri() method.
+     *
+     * @params object $controller
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testConstruct
+     */
+    public function testGetQueryUri(\Thallium\Controllers\HttpRouterController $controller)
+    {
+        $dump = $controller->getQueryUri();
+        $this->assertInternalType('string', $dump);
+        $this->assertNotEmpty($dump);
+        $this->assertEquals('testparam=foobar', $dump);
+    }
+
+    /**
+     * a test for the hasQueryView() method.
+     *
+     * @params object $controller
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testConstruct
+     */
+    public function testHasQueryView(\Thallium\Controllers\HttpRouterController $controller)
+    {
+        $this->assertTrue($controller->hasQueryView());
+    }
+
+    /**
+     * a test for the getQueryView() method.
+     *
+     * @params object $controller
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testConstruct
+     */
+    public function testGetQueryView(\Thallium\Controllers\HttpRouterController $controller)
+    {
+        $dump = $controller->getQueryView();
+        $this->assertInternalType('string', $dump);
+        $this->assertNotEmpty($dump);
+        $this->assertEquals('testparam=foobar', $dump);
+    }
 }
 
 // vim: set filetype=php expandtab softtabstop=4 tabstop=4 shiftwidth=4:
