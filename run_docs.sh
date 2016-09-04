@@ -15,11 +15,11 @@ OUTPUT="${DIRNAME}/docs"
 TITLE="Thallium Test Suite Documentation"
 SOURCE="tests"
 
-if [ -d ${OUTPUT} ]; then
-   rm -r ${OUTPUT}
+if [ -d "${OUTPUT}" ]; then
+   rm -r "${OUTPUT}"
 fi
 
-if [ ! -d ${SOURCE} ]; then
+if [ ! -d "${SOURCE}" ]; then
    echo "${SOURCE} already exists!"
    exit 1
 fi
