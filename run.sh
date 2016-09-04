@@ -7,8 +7,10 @@ GITORIGIN="devel"
 
 SOURCE="${DIRNAME}/$(basename ${GITREPO} .git)"
 
-if [ ! -d ${SOURCE} ]; then
-   if [ -f ${SOURCE} ]; then
+[ ! -z "${SOURCE}" ] || { echo "Failed to get source name!"; exit 1; }
+
+if [ ! -d "${SOURCE}" ]; then
+   if [ -f "${SOURCE}" ]; then
       echo "${SOURCE} already exists!"
       exit 1
    fi
@@ -17,14 +19,14 @@ if [ ! -d ${SOURCE} ]; then
    git clone -q ${GITREPO}
    popd >/dev/null
 
-   if [ ! -d ${SOURCE} ] || [ ! -d ${SOURCE}/.git ]; then
+   if [ ! -d "${SOURCE}" ] || [ ! -d "${SOURCE}/.git" ]; then
       echo "git-clone on ${GITREPO} failed!"
       exit 1
    fi
 fi
 
 echo "Update thallium repository."
-pushd ${SOURCE} >/dev/null
+pushd "${SOURCE}" >/dev/null
 git fetch -q ${GITORIGIN}
 git rebase -s recursive -X ours ${GITORIGIN}/master
 popd >/dev/null
