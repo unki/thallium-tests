@@ -3,7 +3,7 @@
 DIRNAME=$(dirname $0)
 DIRNAME=$(realpath ${DIRNAME})
 GITREPO="http://git.netshadow.net/thallium.git"
-GITORIGIN="devel"
+GITORIGIN="master"
 
 SOURCE="${DIRNAME}/$(basename ${GITREPO} .git)"
 
