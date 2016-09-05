@@ -9,7 +9,6 @@ APIGEN="/usr/bin/apigen"
 
 DIRNAME=$(dirname $0)
 DIRNAME=$(realpath ${DIRNAME})
-GITORIGIN="devel"
 
 OUTPUT="${DIRNAME}/docs"
 TITLE="Thallium Test Suite Documentation"
