@@ -353,6 +353,19 @@ class MainControllerTest extends TestCase
     }
 
     /**
+     * a test for the hasRegisteredModels() method.
+     *
+     * @params object $controller
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testInit
+     */
+    public function testHasRegisteredModels(\Thallium\Controllers\MainController $controller)
+    {
+        $this->assertTrue($controller->hasRegisteredModels());
+    }
+
+    /**
      * a test for the getRegisteredModels() method.
      *
      * @params object $controller
