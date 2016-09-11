@@ -1211,6 +1211,84 @@ class DefaultModelTest extends TestCase
 
         $this->assertEquals($clone_idx, $link_idx);
     }
+
+    /**
+     *********************************************************
+     * searching
+     *********************************************************
+     */
+
+    /**
+     * a test for the isSearchable() method.
+     *
+     * @params object $model
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testSave
+     * @depends testConstructItemsModel
+     */
+    public function testIsSearchable(\Thallium\Models\TestModel $test, \Thallium\Models\TestsModel $tests)
+    {
+        $this->assertFalse($test::isSearchable());
+        $this->assertTrue($tests::isSearchable());
+    }
+
+    /**
+     * a test for the hasSearchableFields() method.
+     *
+     * @params object $model
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testSave
+     * @depends testConstructItemsModel
+     */
+    public function testHasSearchableFields(\Thallium\Models\TestModel $test, \Thallium\Models\TestsModel $tests)
+    {
+        $this->assertFalse($test::hasSearchableFields());
+        $this->assertTrue($tests::hasSearchableFields());
+    }
+
+    /**
+     * a test for the getSearchableFields() method.
+     *
+     * @params object $model
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testConstructItemsModel
+     */
+    public function testgetSearchableFields(\Thallium\Models\TestsModel $tests)
+    {
+        $dump = $tests::getSearchableFields();
+        $this->assertNotFalse($dump);
+        $this->assertNotEmpty($dump);
+        $this->assertInternalType('array', $dump);
+    }
+
+    /**
+     * a test for the find() method.
+     *
+     * @params object $model
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testConstructItemsModel
+     * @depends testSave
+     */
+    public function testFind(\Thallium\Models\TestsModel $tests)
+    {
+        $dump = $tests::find(array(
+            'data' => 'foobar',
+            'type' => 'string',
+        ), array('name'));
+
+        $this->assertNotFalse($dump);
+        $this->assertNotEmpty($dump);
+        $this->assertInternalType('array', $dump);
+
+        $result = $dump[0];
+
+        $this->assertTrue(array_key_exists('test_name', $result));
+        $this->assertEquals('foobar', $result['test_name']);
+    }
 }
 
 /**
@@ -1299,6 +1377,14 @@ class TestsModel extends \Thallium\Models\DefaultModel
 
     /** @var string $model_items_model */
     protected static $model_items_model = 'TestModel';
+
+    /** @var bool $model_is_searchable */
+    protected static $model_is_searchable = true;
+
+    /** @var array $model_searchable_fields */
+    protected static $model_searchable_fields = array(
+        'name',
+    );
 }
 
 // vim: set filetype=php expandtab softtabstop=4 tabstop=4 shiftwidth=4:
