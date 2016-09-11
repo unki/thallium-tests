@@ -56,33 +56,8 @@ class HttpRouterControllerTest extends TestCase
      */
     public function testSelect(\Thallium\Controllers\HttpRouterController $controller)
     {
-        $dump = $controller->select();
-
-        $this->assertInstanceOf('stdClass', $dump);
-        $this->assertTrue(property_exists($dump, 'method'));
-        $this->assertTrue(property_exists($dump, 'uri'));
-        $this->assertTrue(property_exists($dump, 'view'));
-        $this->assertTrue(property_exists($dump, 'params'));
-        $this->assertTrue(property_exists($dump, 'call_type'));
-
-        $this->assertEquals('GET', $dump->method);
-        $this->assertEquals(sprintf(
-            '/thallium/documents/show-%d-%s?testparam=foobar',
-            1,
-            '0123456789012345678901234567890123456789012345678901234567890123'
-        ), $dump->uri);
-        $this->assertEquals('documents', $dump->view);
-        $this->assertInternalType('array', $dump->params);
-        $this->assertNotEmpty($dump->params);
-        $this->assertEquals(
-            'show-1-0123456789012345678901234567890123456789012345678901234567890123',
-            $dump->params[1]
-        );
-        $this->assertEquals(
-            'testparam=foobar',
-            $dump->params[2]
-        );
-        $this->assertEquals('common', $dump->call_type);
+        $this->assertTrue($controller->select());
+        return $controller;
     }
 
     /**
@@ -156,28 +131,12 @@ class HttpRouterControllerTest extends TestCase
     }
 
     /**
-     * a test for the parseQueryParams() method.
-     *
-     * @params object $controller
-     * @returns void
-     * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
-     */
-    public function testParseQueryParams(\Thallium\Controllers\HttpRouterController $controller)
-    {
-        $dump = $controller->parseQueryParams();
-
-        $this->assertInternalType('array', $dump);
-        $this->assertNotEmpty($dump);
-    }
-
-    /**
      * a test for the redirectTo() method.
      *
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
+     * @depends testSelect
      */
     public function testRedirectTo(\Thallium\Controllers\HttpRouterController $controller)
     {
@@ -190,7 +149,7 @@ class HttpRouterControllerTest extends TestCase
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
+     * @depends testSelect
      */
     public function testHasQueryParams(\Thallium\Controllers\HttpRouterController $controller)
     {
@@ -203,7 +162,7 @@ class HttpRouterControllerTest extends TestCase
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
+     * @depends testSelect
      */
     public function testGetQueryParams(\Thallium\Controllers\HttpRouterController $controller)
     {
@@ -219,11 +178,12 @@ class HttpRouterControllerTest extends TestCase
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
+     * @depends testSelect
      */
     public function testHasQueryParam(\Thallium\Controllers\HttpRouterController $controller)
     {
-        $this->assertTrue($controller->hasQueryParam(2));
+        $this->assertTrue($controller->hasQueryParam(1));
+        $this->assertTrue($controller->hasQueryParam('testparam'));
     }
 
     /**
@@ -232,15 +192,44 @@ class HttpRouterControllerTest extends TestCase
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
+     * @depends testSelect
      */
     public function testGetQueryParam(\Thallium\Controllers\HttpRouterController $controller)
     {
         $dump = $controller->getQueryParam(2);
         $this->assertInternalType('string', $dump);
         $this->assertNotEmpty($dump);
-        $this->assertEquals('testparam=foobar', $dump);
+        $this->assertEquals('1-0123456789012345678901234567890123456789012345678901234567890123', $dump);
+
+        $dump = $controller->getQueryParam('testparam');
+        $this->assertInternalType('string', $dump);
+        $this->assertNotEmpty($dump);
+        $this->assertEquals('foobar', $dump);
+
     }
+
+    /**
+     * a test for the parseQueryParams() method.
+     *
+     * @params object $controller
+     * @returns void
+     * @throws \Thallium\Controllers\ExceptionController
+     * @depends testSelect
+     */
+    public function testParseQueryParams(\Thallium\Controllers\HttpRouterController $controller)
+    {
+        $dump = $controller->parseQueryParams();
+
+        $this->assertInternalType('array', $dump);
+        $this->assertNotEmpty($dump);
+        $this->assertEquals(2, count($dump));
+        $this->assertTrue(array_key_exists('id', $dump));
+        $this->assertTrue(array_key_exists('guid', $dump));
+        $this->assertEquals(1, $dump['id']);
+        $this->assertEquals('0123456789012345678901234567890123456789012345678901234567890123', $dump['guid']);
+    }
+
+
 
     /**
      * a test for the hasQueryMethod() method.
@@ -248,7 +237,7 @@ class HttpRouterControllerTest extends TestCase
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
+     * @depends testSelect
      */
     public function testHasQueryMethod(\Thallium\Controllers\HttpRouterController $controller)
     {
@@ -261,7 +250,7 @@ class HttpRouterControllerTest extends TestCase
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
+     * @depends testSelect
      */
     public function testGetQueryMethod(\Thallium\Controllers\HttpRouterController $controller)
     {
@@ -277,7 +266,7 @@ class HttpRouterControllerTest extends TestCase
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
+     * @depends testSelect
      */
     public function testHasQueryUri(\Thallium\Controllers\HttpRouterController $controller)
     {
@@ -290,7 +279,7 @@ class HttpRouterControllerTest extends TestCase
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
+     * @depends testSelect
      */
     public function testGetQueryUri(\Thallium\Controllers\HttpRouterController $controller)
     {
@@ -298,8 +287,8 @@ class HttpRouterControllerTest extends TestCase
         $this->assertInternalType('string', $dump);
         $this->assertNotEmpty($dump);
         $this->assertEquals(
-            '/thallium/documents/show-1-'.
-            '0123456789012345678901234567890123456789012345678901234567890123'.
+            '/thallium/documents/show/'.
+            '1-0123456789012345678901234567890123456789012345678901234567890123'.
             '?testparam=foobar',
             $dump
         );
@@ -311,7 +300,7 @@ class HttpRouterControllerTest extends TestCase
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
+     * @depends testSelect
      */
     public function testHasQueryView(\Thallium\Controllers\HttpRouterController $controller)
     {
@@ -324,7 +313,7 @@ class HttpRouterControllerTest extends TestCase
      * @params object $controller
      * @returns void
      * @throws \Thallium\Controllers\ExceptionController
-     * @depends testConstruct
+     * @depends testSelect
      */
     public function testGetQueryView(\Thallium\Controllers\HttpRouterController $controller)
     {
