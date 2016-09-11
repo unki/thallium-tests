@@ -33,6 +33,7 @@
 			<file>tests/SessionControllerTest.php</file>
 			<file>tests/ExceptionControllerTest.php</file>
 			<file>tests/PagingControllerTest.php</file>
+			<file>tests/SearchControllerTest.php</file>
 		</testsuite>
 		<testsuite name="models">
 			<file>tests/DefaultModelTest.php</file>
