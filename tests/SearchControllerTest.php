@@ -126,7 +126,7 @@ class SearchControllerTest extends TestCase
         $this->assertNotFalse($entry);
         $this->assertNotEmpty($entry);
         $this->assertInternalType('array', $entry);
-        $this->assertEquals(5, count($entry));
+        $this->assertEquals(7, count($entry));
 
         $this->assertTrue(array_key_exists('audit_type', $entry));
         $this->assertTrue(array_key_exists('audit_scene', $entry));
