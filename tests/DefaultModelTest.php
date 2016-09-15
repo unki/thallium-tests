@@ -98,8 +98,8 @@ class DefaultModelTest extends TestCase
      */
     public function testGetModelName(\Thallium\Models\TestModel $test, \Thallium\Models\TestsModel $tests)
     {
-        $this->assertEquals('Thallium\Models\TestModel', $test->getModelName());
-        $this->assertEquals('Thallium\Models\TestsModel', $tests->getModelName());
+        $this->assertEquals('Thallium\Models\TestModel', $test::getModelName());
+        $this->assertEquals('Thallium\Models\TestsModel', $tests::getModelName());
     }
 
     /**
